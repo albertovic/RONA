@@ -29,6 +29,14 @@ This package contains these nodes:
 ### simple_rona_robot
 This package is currently not in use; it was another approach to solve the omnidirectional robot problem without going into the complexity of modeling wheels in detail. Since the first option seems to work correctly, I prefer to continue with that.
 
+## TODO
+- Rewrite the arduino code with a class for the motor with all the relevant functions. Make it reusable and don't repeat code.
+- Prepare the voltage regulator to output 12 V for the motors.
+- Test the communication between the OrangePi and the arduino. Maybe using the IMU (?
+- Program the SLAM part of the code
+- Build the actual robot,
+- Maybe add some sensors when possible.
+
 # RONA (Español)
 
 ## Introducción
