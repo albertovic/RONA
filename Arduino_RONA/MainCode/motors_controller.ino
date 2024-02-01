@@ -7,14 +7,18 @@ void MotorController::addMotor(const Motor& motor) {
     motors.push_back(motor);
 }
 
+void MotorController::addEncoderValue(const EncoderValues& enc){
+    encoderValues.push_back(enc);
+}
+
 void MotorController::setMotorSpeed(double speed) {
     pidController.setSetpoint(speed);
 }
 
-void MotorController::updateMotorSpeeds(double speeds[4]) {
+void MotorController::updateMotorSpeeds(double speeds[2]) {
     for (size_t i = 0; i < motors.size(); ++i) {
         pidController.setSetpoint(speeds[i]);
-        int encoderValue = motors[i].readEncoder();
+        int encoderValue = encoderValues[i].wheelSpeed();
         double output = pidController.compute(encoderValue);
         motors[i].setMotorSpeed(output);
     }

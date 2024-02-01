@@ -6,6 +6,7 @@
 
 #include "motor.h"
 #include "PIDController.h"
+#include "EncoderValues.h"
 #include "Vector.h"
 
 class MotorController {
@@ -13,9 +14,11 @@ private:
 
 public:
     Vector<Motor> motors;
+    Vector<EncoderValues> encoderValues;
     PIDController pidController; // A single PID controller shared by all the motors
     MotorController(double kp, double ki, double kd);
     void addMotor(const Motor& motor);
+    void addEncoderValue(const EncoderValues& enc);
     void setMotorSpeed(double speed);
     void updateMotorSpeeds(double speeds[4]);
     double computePID(double input);

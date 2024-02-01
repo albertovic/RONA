@@ -6,12 +6,12 @@ void PIDController::setSetpoint(double sp) {
     setpoint = sp;
 }
 
-double PIDController::compute(double input) {
+double PIDController::compute(double realValue) {
     unsigned long currentTime = millis(); // Get current time
     double elapsedTime = (currentTime - lastTime); // Convert to seconds
 
-
-    double error = setpoint - input;
+    // 
+    double error = setpoint - realValue;
     integral += error * elapsedTime;
 
     // Anti-windup - limit the integral term

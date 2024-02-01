@@ -2,24 +2,13 @@
 #define MOT_PINS
 
 //Motor 1
-#define FRONT_LEFT_MOTOR_FORWARD    22
-#define FRONT_LEFT_MOTOR_BACKWARD   23
-#define FRONT_LEFT_MOTOR_PWM        2
+#define LEFT_MOTOR_FORWARD    22
+#define LEFT_MOTOR_BACKWARD   23
+#define LEFT_MOTOR_PWM        4
 
 //Motor 2
-#define FRONT_RIGHT_MOTOR_FORWARD   24
-#define FRONT_RIGHT_MOTOR_BACKWARD  25
-#define FRONT_RIGHT_MOTOR_PWM       3
-
-//Motor 3
-#define REAR_RIGHT_MOTOR_FORWARD    26
-#define REAR_RIGHT_MOTOR_BACKWARD   27
-#define REAR_RIGHT_MOTOR_PWM        4
-
-//Motor 4
-#define REAR_LEFT_MOTOR_FORWARD     28
-#define REAR_LEFT_MOTOR_BACKWARD    29
-#define REAR_LEFT_MOTOR_PWM         5
-
+#define RIGHT_MOTOR_FORWARD   24
+#define RIGHT_MOTOR_BACKWARD  25
+#define RIGHT_MOTOR_PWM       5
 
 #endif

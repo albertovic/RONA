@@ -14,7 +14,7 @@ class PIDController {
 public:
     PIDController(double p, double i, double d);
     void setSetpoint(double sp);
-    double compute(double input);
+    double compute(double realValue);
     void reset();
 };
 

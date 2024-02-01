@@ -1,17 +1,16 @@
 #include "motor.h"
 
-Motor::Motor(int pwm, int forwardPin, int backwardPin, int encoderA, int encoderB) {
+#define REDUCTION_RATIO 21.3
+
+Motor::Motor(int pwm, int forwardPin, int backwardPin) {
   pwmPin = pwm;
   this->forwardPin = forwardPin;
   this->backwardPin = backwardPin;
-  encoderPinA = encoderA;
-  encoderPinB = encoderB;
 
   // Initialize pin modes
   pinMode(pwmPin, OUTPUT);
   pinMode(forwardPin, OUTPUT);
   pinMode(backwardPin, OUTPUT);
-  pinMode(encoderPin, INPUT);
 }
 
 void Motor::setMotorSpeed(int speed) {
@@ -30,7 +29,3 @@ void Motor::setMotorSpeed(int speed) {
   }
 }
 
-int Motor::readEncoder() {
-  // Implement encoder reading logic here
-  // Return the encoder value
-}

@@ -23,10 +23,8 @@
 #define UPDATE_PID     'u'
 #define DIGITAL_WRITE  'w'
 #define ANALOG_WRITE   'x'
-#define FRONT_LEFT      0
-#define FRONT_RIGHT     1
-#define REAR_LEFT       2
-#define REAR_RIGHT      3
+#define LEFT            0
+#define RIGHT           1
 
 #endif
 
