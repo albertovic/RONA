@@ -1,0 +1,13 @@
+window_sizes 1845 1016 432 1407 843 120
+cleanlooks_style
+diagrams
+  active  classdiagram_ref 128009 // Arduino Class Diagram
+    1404 840 90 A1-Landscape 141 106
+end
+show_stereotypes
+selected attribute_ref 128009 // pwmPin
+open
+  class_ref 128009 // motor
+  class_ref 128137 // PIDController
+end
+end

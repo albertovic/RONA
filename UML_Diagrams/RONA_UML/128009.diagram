@@ -1,0 +1,19 @@
+format 224
+
+classcanvas 128265 class_ref 128009 // motor
+  classdiagramsettings member_max_width 0 end
+  xyzwh 246.181 242.134 2000 471 180
+end
+classcanvas 128393 class_ref 128137 // PIDController
+  classdiagramsettings member_max_width 0 end
+  xyzwh 754.384 232.016 2000 377 197
+end
+classcanvas 128521 class_ref 128265 // EncoderValues
+  classdiagramsettings member_max_width 0 end
+  xyzwh 204 564 2000 359 159
+end
+classcanvas 128649 class_ref 128393 // MotorsController
+  classdiagramsettings member_max_width 0 end
+  xyzwh 745 585 2000 432 152
+end
+end

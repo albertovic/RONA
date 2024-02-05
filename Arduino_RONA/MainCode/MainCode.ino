@@ -1,6 +1,6 @@
 #include "PIDController.h"
 #include "motor.h"
-#include "motors_controller.h"
+#include "MotorsController.h"
 #include "motor_pins.h"
 #include "encoder.h"
 #include "commands.h"
@@ -27,8 +27,10 @@ EncoderValues left_enc_value = EncoderValues();
 EncoderValues right_enc_value = EncoderValues();
 
 void setup() {
+  // Add the motors to the controller
   controller.addMotor(left_motor);
   controller.addMotor(right_motor);
+  // Add the encoderValues to the controller. They are basically structures that storage the values from the encoders and transform them into usable data (see class)
   controller.addEncoderValue(left_enc_value);
   controller.addEncoderValue(right_enc_value);
 
@@ -54,22 +56,28 @@ void setup() {
   PCICR |= (1 << PCIE1) | (1 << PCIE2);
 }
 
+// The loop is in charge of the serial communication, as well as updating the wheel speeds when the time is greater than the assigned sample time
 void loop() {
   unsigned long currentTime = millis();
-  double wheel_speeds[2];
+  static double wheel_speeds[2];
 
   // TODO SERIAL COMMUNICATION
 
   // Verify if the sample time has passed
   if (currentTime - lastComputeTime >= sampleTime) {
 
-    //Update the 4 motor speeds
+    // Update the 4 motor speeds.
+    // This command is in charge of:
+    // - Sending the new speed to the motors (pidController.setSetpoint(speeds[i]);)
+    // - Reading the encoder value from the encoderValues objects (int speedEncoderValue = encoderValues[i].wheelSpeed();)
+    // - 
     controller.updateMotorSpeeds(wheel_speeds);
     
     // Update reference time
     lastComputeTime = millis();
   }
 }
+
 
 void readEncoders(){
   left_enc_value.getValue(readEncoder(LEFT));

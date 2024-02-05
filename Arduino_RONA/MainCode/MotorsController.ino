@@ -1,4 +1,4 @@
-#include "motors_controller.h"
+#include "MotorsController.h"
 
 MotorController::MotorController(double kp, double ki, double kd)
     : pidController(kp, ki, kd) {}
@@ -17,9 +17,13 @@ void MotorController::setMotorSpeed(double speed) {
 
 void MotorController::updateMotorSpeeds(double speeds[2]) {
     for (size_t i = 0; i < motors.size(); ++i) {
+        // Sets the new speeds to the motors
         pidController.setSetpoint(speeds[i]);
-        int encoderValue = encoderValues[i].wheelSpeed();
-        double output = pidController.compute(encoderValue);
+        // Gets the speed of the wheel from the encoder already transformed in RPM
+        int speedEncoderValue = encoderValues[i].wheelSpeed();
+        // Computes the PID with the speed value from the encoders as the real value
+        double output = pidController.compute(speedEncoderValue);
+        // Sets the motor speeds as the computed value from the PID loop
         motors[i].setMotorSpeed(output);
     }
 }
