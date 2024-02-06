@@ -5,7 +5,7 @@ EncoderValues::EncoderValues(){}
 // Returns the wheel speed in rpm
 int EncoderValues::wheelSpeed(){
   double rpm = ( encoderValue1 - encoderValue2 ) / ( REDUCTION_RATIO * ( (timeStamp1 - timeStamp2) / 60000 ) );
-
+  Serial.println("Inside wheelSpeed function.");
   return map(int(rpm), -MAX_MOTOR_RPM, MAX_MOTOR_RPM, -255, 255);
 }
 

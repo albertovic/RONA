@@ -4,6 +4,7 @@ PIDController::PIDController(double p, double i, double d) : kp(p), ki(i), kd(d)
 
 void PIDController::setSetpoint(double sp) {
     setpoint = sp;
+    Serial.println("Inside setSetpoint function.");
 }
 
 double PIDController::compute(double realValue) {

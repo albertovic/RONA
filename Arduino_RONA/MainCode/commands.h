@@ -5,26 +5,22 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-#define ANALOG_READ    'a'
-#define GET_BAUDRATE   'b'
-#define PIN_MODE       'c'
-#define DIGITAL_READ   'd'
+#define GET_BAUDRATE      'b'
 
-#define READ_ENCODERS  'e'
+#define READ_ENCODERS     'e'
 
-#define MOTOR_SPEEDS   'm'
+#define READ_MOTOR_SPEEDS 'm'
 
-#define MOTOR_RAW_PWM  'o'
+#define MOTOR_RAW_PWM     'o'
 
-#define PING           'p'
+#define PING              'p'
 
-#define RESET_ENCODERS 'r'
+#define RESET_ENCODERS    'r'
 
-#define UPDATE_PID     'u'
-#define DIGITAL_WRITE  'w'
-#define ANALOG_WRITE   'x'
-#define LEFT            0
-#define RIGHT           1
+#define SET_MOTOR_SPEEDS  's'
+
+#define LEFT               0
+#define RIGHT              1
 
 #endif
 

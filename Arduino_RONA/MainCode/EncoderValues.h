@@ -6,10 +6,10 @@
 
 class EncoderValues{
 
-unsigned long timeStamp1 = 0;
-unsigned long timeStamp2 = 0;
-long encoderValue1 = 0;
-long encoderValue2 = 0;
+unsigned long timeStamp1 = 100;
+unsigned long timeStamp2 = 200;
+long encoderValue1 = 90;
+long encoderValue2 = 40;
 
 public:
 

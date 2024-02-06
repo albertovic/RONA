@@ -1,4 +1,4 @@
-#include "motor.h"
+#include "Motor.h"
 
 #define REDUCTION_RATIO 21.3
 
