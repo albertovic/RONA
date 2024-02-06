@@ -31,7 +31,8 @@ This package is currently not in use; it was another approach to solve the omnid
 
 ## TODO
 - DONE: Rewrite the arduino code with a class for the motor with all the relevant functions. Make it reusable and don't repeat code.
-- Change the code so that it runs in two separate Arduino (due to interruption pins limitations).
+- DONE: Change the code so that it runs in two separate Arduino (due to interruption pins limitations).
+- Test the motors. Run them with a pontentiometer and check if the encoders logic is working correctly.
 - Think about if I should send to the arduino anithing more than the velocities. Is it worthit to make it a server-lient relation? This would mean I can send the arduino a request and it sends me back whatever I request. This may be interesing for the IMU and other future sensors, but I am no sure if it will affect the behaviour of the motors.
 - *Consider the option of connecting the sensors directly to the OrangePi and let the Arduinos just manage the motors and the encoders, being the OrangePi in charge of actuating the motors depending on the information from the sensors. This would be the strongest option in my opinion.*
 - Prepare the ROS2 communication code with the arduino to send velocities or whatever needed to two different serial ports.
