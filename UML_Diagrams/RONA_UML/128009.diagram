@@ -2,18 +2,33 @@ format 224
 
 classcanvas 128265 class_ref 128009 // motor
   classdiagramsettings member_max_width 0 end
-  xyzwh 246.181 242.134 2000 471 180
+  xyzwh 125.381 281.534 2000 470 180
 end
 classcanvas 128393 class_ref 128137 // PIDController
   classdiagramsettings member_max_width 0 end
-  xyzwh 754.384 232.016 2000 377 197
+  xyzwh 694.384 215.816 2000 377 197
 end
 classcanvas 128521 class_ref 128265 // EncoderValues
   classdiagramsettings member_max_width 0 end
-  xyzwh 204 564 2000 359 159
+  xyzwh 132.5 529.8 2000 359 159
 end
 classcanvas 128649 class_ref 128393 // MotorsController
   classdiagramsettings member_max_width 0 end
-  xyzwh 745 585 2000 432 152
+  xyzwh 739 564.5 2000 431 153
+end
+relationcanvas 128905 relation_ref 128137 // <directional composition>
+  from ref 128649 z 2001 stereotype "<<vector>>" xyz 593 514 3000 to ref 128265
+  role_a_pos 572 444 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129033 relation_ref 128265 // <directional composition>
+  from ref 128649 z 2001 stereotype "<<vector>>" xyz 496 633 3000 to ref 128521
+  role_a_pos 503 594 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129289 relation_ref 128393 // <directional composition>
+  from ref 128649 z 2001 to ref 128393
+  role_a_pos 914 421 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
 end
 end

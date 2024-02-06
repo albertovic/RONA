@@ -1,6 +1,6 @@
 format 224
 "RONA_UML"
-  revision 1
+  revision 2
   modified_by 9 "alberto"
 
 
@@ -65,7 +65,7 @@ format 224
     activitydiagramsettings
      end
     classdiagram 128009 "Arduino Class Diagram"
-      classdiagramsettings hide_attributes no hide_operations no hide_getset_operations no show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_context uml show_members_multiplicity yes show_members_initialization yes show_attribute_modifiers no member_max_width 0 class_drawing_mode class end
+      classdiagramsettings draw_all_relations no hide_attributes no hide_operations no hide_getset_operations no show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_context uml show_members_multiplicity yes show_members_initialization yes show_attribute_modifiers no member_max_width 0 class_drawing_mode class end
       size A1-Landscape
     end
 
@@ -208,6 +208,10 @@ class Motor {
 	
 	
 	
+      end
+
+      classrelation 128137 // <composition>
+	relation_ref 128009 // <composition>
       end
     end
 
@@ -378,6 +382,100 @@ ${inlines}
       explicit_switch_type ""
       mysql_decl ""
       
+      attribute 136073 "timeStamp1"
+	private explicit_type "unsigned long"
+	init_value "0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136201 "timeStamp2"
+	private explicit_type "unsigned long"
+	init_value "0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136329 "encoderValue1"
+	private explicit_type "long"
+	init_value "0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136457 "encoderValue2"
+	private explicit_type "long"
+	init_value "0"
+	cpp_decl "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 135049 "EncoderValues"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${typeprefix}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${typeprefix}${class}::${name}${(}${)}${volatile}${throw} {
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135177 "wheelSpeed"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135305 "getValue"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "enc" explicit_type "long"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
     end
 
     class 128393 "MotorsController"
@@ -393,6 +491,153 @@ ${inlines}
       explicit_switch_type ""
       mysql_decl ""
       
+      classrelation 128009 // <composition>
+	relation 128009 *---
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128009 // <composition>
+	  b role_name "" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128137 // <composition>
+      end
+
+      classrelation 128265 // motors (<directional composition>)
+	relation 128137 *-->
+	  stereotype "vector"
+	  a role_name "motors" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128265 // motors (<directional composition>)
+	  b parent class_ref 128009 // motor
+      end
+
+      classrelation 128393 // encoderValues (<directional composition>)
+	relation 128265 *-->
+	  stereotype "vector"
+	  a role_name "encoderValues" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128393 // encoderValues (<directional composition>)
+	  b parent class_ref 128265 // EncoderValues
+      end
+
+      classrelation 128521 // pidController (<directional composition>)
+	relation 128393 *-->
+	  a role_name "pidController" private
+	    cpp default "    ${comment}${static}${thread_local}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128521 // pidController (<directional composition>)
+	  b parent class_ref 128137 // PIDController
+      end
+
+      operation 135433 "MotorController"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "kp" explicit_type "double"
+	  param in name "ki" explicit_type "double"
+	  param in name "kd" explicit_type "double"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135561 "addMotor"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "motor" explicit_type "Motor"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135689 "addEncoderValue"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "enc" type class_ref 128265 // EncoderValues
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135817 "setMotorSpeed"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "speed" explicit_type "double"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 135945 "updateMotorSpeeds"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "speeds[2]" explicit_type "double[]"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} & ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136073 "computePID"
+	public explicit_return_type "double"
+	nparams 1
+	  param in name "input" explicit_type "double"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 136201 "setPIDSetPoint"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "setPoint" explicit_type "double"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${typeprefix}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${typeprefix}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
     end
   end
 end
