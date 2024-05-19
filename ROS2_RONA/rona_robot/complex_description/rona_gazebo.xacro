@@ -47,7 +47,7 @@
             <robot_param_node>robot_state_publisher</robot_param_node>
             <!-- This indicates the name of the file that contains the configuration 
                 parameters of the ros2 control library -->
-            <parameters>$(find rona_controller)/config/rona_controllers.yaml</parameters>
+            <parameters>$(find rona_robot)/config/rona_controllers.yaml</parameters>
         </plugin>
     </gazebo>
 
