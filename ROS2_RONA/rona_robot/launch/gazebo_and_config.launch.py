@@ -13,7 +13,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 def generate_launch_description():
 
     config_launch_file = IncludeLaunchDescription(PythonLaunchDescriptionSource(
-        os.path.join(get_package_share_directory("rona_controller"), "launch", "controller.launch.py")
+        os.path.join(get_package_share_directory("rona_robot"), "launch", "controller.launch.py")
     ))
 
     gazebo_launch = IncludeLaunchDescription(PythonLaunchDescriptionSource(
