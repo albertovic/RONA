@@ -28,6 +28,8 @@ class DirectKinematicsController(Node):
         angular_z = kinematics_msg.data[2]
 
         #These values need to be parameters but are variables for now
+        #These are used to define the max angular and linear velocities, as these values are multiplied by
+        # a number that ranges from -1 to 1.
         linear_vel = 0.6
         angular_vel = 2
         lenght = 0.15

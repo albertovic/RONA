@@ -11,7 +11,10 @@ controller_manager:
       type: joint_state_broadcaster/JointStateBroadcaster
       #This module is responsible of publishing the current state of each joint to a topic
 
-    #The actual controller for hte robots wheels
+    #The actual controller for the robots wheels
+    # This velocity controller is from the ros_controllers pkg
+    # It will just publish the wheel velocities, they should already be transformed from vehicle linear and
+    # angular movement to wheel speed.
     simple_velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
 
