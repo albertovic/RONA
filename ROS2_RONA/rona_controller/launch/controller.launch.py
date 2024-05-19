@@ -16,6 +16,8 @@ def generate_launch_description():
         ]
     )
 
+    # The velocity controller is configured in rona_controllers.yaml.
+    # The spawner node is used to load controllers in time of execution.
     simple_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
