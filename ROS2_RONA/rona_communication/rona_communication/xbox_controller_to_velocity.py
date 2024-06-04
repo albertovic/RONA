@@ -17,7 +17,7 @@ class XboxControllerNode(Node):
 
         self.raw_vel_publisher = self.create_publisher(
             Float64MultiArray,
-            '/kinematics_controller/commands', 
+            '/cmd_vel_joy', 
             10)
         
         self.raw_vel_msg = Float64MultiArray()

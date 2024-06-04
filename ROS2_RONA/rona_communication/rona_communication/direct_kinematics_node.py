@@ -11,7 +11,7 @@ class DirectKinematicsController(Node):
 
         self.subscription = self.create_subscription(
             Float64MultiArray,
-            '/kinematics_controller/commands',
+            '/cmd',
             self.kinematics_callback,
             10)
 
